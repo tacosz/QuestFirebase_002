@@ -4,6 +4,8 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
+import com.example.myfirebase.modeldata.Siswa
+import com.example.myfirebase.repositori.RepositorySiswa
 
 sealed interface StatusUiSiswa {
     data class Success(val siswa: List<Siswa> = listOf()) : StatusUiSiswa
