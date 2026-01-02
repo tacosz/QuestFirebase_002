@@ -1,17 +1,23 @@
 package com.example.myfirebase.view
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -26,6 +32,7 @@ import com.example.myfirebase.view.route.DestinasiHome
 import com.example.myfirebase.viewmodel.HomeViewModel
 import com.example.myfirebase.viewmodel.PenyediaViewModel
 import com.example.myfirebase.R
+import com.example.myfirebase.modeldata.Siswa
 import com.example.myfirebase.viewmodel.StatusUiSiswa
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -97,4 +104,35 @@ fun LoadingScreen(modifier: Modifier = Modifier){
         painter = painterResource(R.drawable.loading_img),
         contentDescription = stringResource(R.string.loading)
     )
+}
+@Composable
+fun ErrorScreen(retryAction: () -> Unit, modifier: Modifier = Modifier){
+    Column(
+        modifier = modifier,
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Text(text = stringResource(R.string.gagal), modifier = Modifier.padding(16.dp))
+        Button(onClick = retryAction) {
+            Text(stringResource(R.string.retry))
+        }
+    }
+}
+@Composable
+fun DaftarSiswa(
+    itemSiswa : List<Siswa>,
+    onSiswaClick: (Siswa) -> Unit,
+    modifier: Modifier = Modifier
+){
+    LazyColumn(modifier = Modifier) {
+        items(items = itemSiswa, key = {it.id}){
+            person ->
+            ItemSiswa(
+                siswa = person,
+                modifier = Modifier
+                    .padding(dimensionResource(id = R.dimen.padding_small))
+                    .clickable{onSiswaClick(person)}
+            )
+        })
+    }
 }
