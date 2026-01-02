@@ -17,4 +17,7 @@ data class DetailSiswa(
 fun DetailSiswa.toDataSiswa(): Siswa(id, nama, alamat, telpon)
 fun Siswa.toDetailSiswa(): DetailSiswa = DetailSiswa(id, nama, alamat, telpon)
 
-data class
+data class UIStateSiswa(
+    val detailSiswa: DetailSiswa = DetailSiswa(),
+    val isEntryValid: Boolean = false
+)
