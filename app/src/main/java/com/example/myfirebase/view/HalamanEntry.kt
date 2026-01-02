@@ -51,6 +51,7 @@ fun EntrySiswaScreen(
             )
         }
     ) { innerPadding ->
+
         EntrySiswaBody(
             uiStateSiswa = viewModel.uiStateSiswa,
             onSiswaValueChange = viewModel::updateUiState,
@@ -76,7 +77,8 @@ fun EntrySiswaBody(
     modifier: Modifier = Modifier
 ){
     Column(
-        verticalArrangement = Arrangement.spacedBy(dimensionResource(id = R.dimen.padding_medium))
+        verticalArrangement = Arrangement.spacedBy(dimensionResource(id = R.dimen.padding_large)),
+        modifier = modifier.padding(dimensionResource(id = R.dimen.padding_medium))
     ) {
         FormTambahSiswa(
             detailSiswa = uiStateSiswa.detailSiswa,
