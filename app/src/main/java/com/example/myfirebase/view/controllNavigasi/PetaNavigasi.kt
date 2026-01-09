@@ -10,6 +10,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.example.myfirebase.view.DetailSiswaScreen
+import com.example.myfirebase.view.EditSiswaScreen
 import com.example.myfirebase.view.EntrySiswaScreen
 import com.example.myfirebase.view.HomeScreen
 import com.example.myfirebase.view.route.DestinasiDetail
@@ -47,6 +48,11 @@ fun HostNavigasi(
         ){
             DetailSiswaScreen(navigateToEditItem = {navController.navigate("${DestinasiEdit.route}/$it")},
                 navigateBack = {navController.navigate(DestinasiHome.route)})
+        }
+        composable(DestinasiEdit.routeWithArgs, arguments = listOf(navArgument(DestinasiEdit.itemIdArg){
+            type = NavType.StringType})){
+            EditSiswaScreen(navigateBack = {navController.navigate(DestinasiHome.route)},
+                onNavigateUp = {navController.navigateUp()})
         }
     }
 }
