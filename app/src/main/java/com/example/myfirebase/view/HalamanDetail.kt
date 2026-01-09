@@ -103,5 +103,13 @@ private fun BodyDetailDataSiswa(
         ) {
             Text(stringResource(R.string.delete))
         }
+        if (deleteConfirmationRequired){
+            DeleteConfirmationDialog(
+                onDeleteConfirm = {
+                    deleteConfirmationRequired = false
+                    onDelete()
+                }
+            )
+        }
     }
 }
