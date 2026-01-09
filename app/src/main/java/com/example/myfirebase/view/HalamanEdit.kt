@@ -1,9 +1,12 @@
 package com.example.myfirebase.view
 
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.myfirebase.view.route.DestinasiEdit
 import com.example.myfirebase.viewmodel.EditViewModel
 import com.example.myfirebase.viewmodel.PenyediaViewModel
 
@@ -14,4 +17,14 @@ fun EditSiswaScreen(
     onNavigateUp: () -> Unit,
     modifier: Modifier = Modifier,
     viewModel: EditViewModel = viewModel(factory = PenyediaViewModel.Factory)
-){}
+){
+    Scaffold(
+        topBar = {
+            SiswaTopAppBar(
+                title = stringResource(DestinasiEdit.titleRes),
+                canNavigateBack = true,
+                navigateUp = onNavigateUp
+            )
+        },
+    ) {  }
+}
