@@ -30,6 +30,7 @@ import com.example.myfirebase.viewmodel.DetailViewModel
 import com.example.myfirebase.viewmodel.PenyediaViewModel
 import com.example.myfirebase.viewmodel.StatusUIDetail
 import com.example.myfirebase.R
+import com.example.myfirebase.modeldata.Siswa
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -108,8 +109,16 @@ private fun BodyDetailDataSiswa(
                 onDeleteConfirm = {
                     deleteConfirmationRequired = false
                     onDelete()
-                }
+                },
+                onDeleteCancle = {deleteConfirmationRequired = false},
+                modifier = Modifier.padding(dimensionResource(id = R.dimen.padding_medium))
             )
         }
     }
+}
+@Composable
+fun DetailDataSiswa(
+    siswa: Siswa?, modifier: Modifier = Modifier
+){
+
 }
