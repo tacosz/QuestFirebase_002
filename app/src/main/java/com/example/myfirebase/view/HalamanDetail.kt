@@ -141,6 +141,15 @@ fun DetailDataSiswa(
                     horizontal = dimensionResource(id = R.dimen.padding_medium)
                 )
             )
+            BarisDetailData(
+                labelResID = R.string.alamat1,
+                itemDetail = siswa.alamat,
+                modifier = Modifier.padding(
+                    horizontal = dimensionResource(
+                        id = R.dimen.padding_medium
+                    )
+                )
+            )
         }
     }
 }
