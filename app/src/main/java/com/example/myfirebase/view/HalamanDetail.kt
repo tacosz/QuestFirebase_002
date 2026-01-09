@@ -1,5 +1,6 @@
 package com.example.myfirebase.view
 
+import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -160,3 +161,7 @@ fun DetailDataSiswa(
         }
     }
 }
+@Composable
+private fun BarisDetailData(
+    @StringRes labelResID: Int, itemDetail: String, modifier: Modifier = Modifier
+){}
