@@ -9,6 +9,11 @@ import com.example.myfirebase.modeldata.Siswa
 import com.example.myfirebase.repositori.RepositorySiswa
 import com.example.myfirebase.view.route.DestinasiDetail
 import kotlinx.serialization.InternalSerializationApi
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
+import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.launch
+import java.io.IOException
 
 sealed interface StatusUIDetail {
     data class Success(val satusiswa: Siswa?) : StatusUIDetail
@@ -26,4 +31,19 @@ class DetailViewModel(savedStateHandle: SavedStateHandle, private val repository
         init {
             getSatuSiswa()
         }
+
+    fun getSatuSiswa(){
+        viewModelScope.launch {
+            statusUIDetail = StatusUIDetail.Loading
+            statusUIDetail = try {
+                StatusUIDetail.Success(satusiswa = repositorySiswa.getSatuSiswa(idSiswa))
+            }
+            catch (e: IOException){
+                StatusUIDetail.Error
+            }
+            catch (e: Exception){
+                StatusUIDetail.Error
+            }
+        }
+    }
     }
